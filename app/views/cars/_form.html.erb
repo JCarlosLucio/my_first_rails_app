@@ -1,32 +1,32 @@
-<%= form_with(model: car, local: true) do |form| %>
+<%= form_with(model: car) do |form| %>
   <% if car.errors.any? %>
-    <div id="error_explanation">
+    <div style="color: red">
       <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
 
       <ul>
-      <% car.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% car.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :make %>
+  <div>
+    <%= form.label :make, style: "display: block" %>
     <%= form.text_field :make %>
   </div>
 
-  <div class="field">
-    <%= form.label :model %>
+  <div>
+    <%= form.label :model, style: "display: block" %>
     <%= form.text_field :model %>
   </div>
 
-  <div class="field">
-    <%= form.label :year %>
+  <div>
+    <%= form.label :year, style: "display: block" %>
     <%= form.number_field :year %>
   </div>
 
-  <div class="actions">
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
